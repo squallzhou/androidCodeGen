@@ -24,7 +24,11 @@ function getCreateTableString(){
 	t += "\t\t+ BaseColumns._ID  + \" INTEGER PRIMARY KEY AUTOINCREMENT, \"\n";
 	for(var i=0;i<props.length;i++){
 		var column = "COLUMN_" + props[i].toUpperCase();
-		t += "\t\t+ " + daoClassName + "." + column + " + \" TEXT, \"\n";
+		if(i==props.length-1){
+			t += "\t\t+ " + daoClassName + "." + column + " + \" TEXT \"\n";
+		}else{
+			t += "\t\t+ " + daoClassName + "." + column + " + \" TEXT, \"\n";
+		}
 	}
 	t += "\t\t+ \"); \";"
 
